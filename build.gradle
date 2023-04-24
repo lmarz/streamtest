@@ -1,0 +1,38 @@
+plugins {
+        id 'com.android.application' version '8.0.0'
+}
+
+repositories {
+        google()
+        mavenCentral()
+}
+
+android {
+        compileSdkVersion 33
+
+        namespace 'org.lmarz.streamtest'
+
+        defaultConfig {
+                minSdkVersion 25
+                targetSdkVersion 33
+        }
+
+        compileOptions {
+                sourceCompatibility JavaVersion.VERSION_17
+                targetCompatibility JavaVersion.VERSION_17
+        }
+}
+
+tasks.withType(JavaCompile).all {
+        options.compilerArgs.add('-Xlint:all')
+        options.compilerArgs.add('-Xdiags:verbose')
+}
+
+dependencies {
+        implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+        implementation 'androidx.lifecycle:lifecycle-process:2.5.1'
+
+        implementation 'com.dji:dji-sdk:4.16.4'
+        compileOnly 'com.dji:dji-sdk-provided:4.16.4'
+}
+
